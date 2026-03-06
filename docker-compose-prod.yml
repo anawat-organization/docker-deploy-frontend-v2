@@ -1,0 +1,10 @@
+services:
+  frontend-new:
+    image: earth14027/234-deploylab-frontend:latest
+    pull_policy: always
+    ports:
+      - "8084:80"  # หน้าเว็บใหม่จะเข้าผ่านพอร์ต 8084
+    environment:
+      - VITE_GRAPHQL_URI=http://3.239.93.238:8083/graphql  # ชี้ไปหา Backend ตัวใหม่
+      - VITE_SERVER_URI=http://3.239.93.238:8083
+    restart: unless-stopped
